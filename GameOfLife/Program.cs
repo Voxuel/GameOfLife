@@ -12,7 +12,29 @@ namespace GameOfLife
         static bool RUNSIMUULATION = true;
         static void Main(string[] args)
         {
+            var grid = new Status[Rows, Columns];
 
+            for (var row = 0; row < Rows;row++)
+            {
+                for (var colum = 0; colum < Columns; colum++)
+                {
+                    grid[row, colum] = (Status)RandomNumberGenerator.GetInt32(0,2);
+                }
+            }
+
+            Console.CancelKeyPress += (sender, args) =>
+            {
+                RUNSIMUULATION = false;
+                Console.WriteLine("\n Ending...");
+            };
+
+            Console.Clear();
+
+            while (RUNSIMUULATION)
+            {
+                Print(grid);
+                grid = NextGeneration(grid);
+            }
         }
         private static Status[,] NextGeneration(Status[,] currentGrid)
         {
@@ -83,4 +105,4 @@ namespace GameOfLife
         Alive,
     }
 }
-}
+
