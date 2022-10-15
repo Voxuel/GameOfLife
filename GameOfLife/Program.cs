@@ -88,7 +88,7 @@ namespace GameOfLife
                 for (var colum = 0; colum < Columns; colum++)
                 {
                     var cell = future[row, colum];
-                    stringBuilder.Append(cell == Status.Alive ? ":D" : ":E");
+                    stringBuilder.Append(cell == Status.Alive ? ":D" : "XD");
                 }
                 stringBuilder.Append("\n");
             }
